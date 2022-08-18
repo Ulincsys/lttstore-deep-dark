@@ -1,5 +1,4 @@
 @-moz-document domain("lttstore.com") {
-
     :root {
         --color-bg: black;
         --color-bg-tr: rgba(0, 0, 0, 0.8);
@@ -10,6 +9,8 @@
         --color-link: #008eff;
         --color-hover: #E95420;
         --color-transition: color .45s cubic-bezier(.785, .135, .15, .86),border .45s cubic-bezier(.785, .135, .15, .86);
+
+        --announcement-bar-height: 30px;
     }
 
     /* Global settings */
@@ -19,10 +20,22 @@
         background: var(--color-bg);
     }
 
+    span {
+        color: var(--color-fg);
+    }
+
     .Header {
         background: var(--color-bg);
         color: var(--color-fg);
         box-shadow: 0 -1px var(--color-border) inset;
+    }
+
+    .Header:hover {
+        background: var(--color-bg-light);
+    }
+
+    .home-grid h1 {
+        color: var(--color-bg);
     }
 
     .Header__Icon:hover {
@@ -59,6 +72,10 @@
         color: var(--color-link);
     }
 
+    .Form__Input, #shopify-product-reviews .spr-form-input-text, #shopify-product-reviews .spr-form-input-email, #shopify-product-reviews .spr-form-input-textarea, .Form__Textarea {
+        border-color: var(--color-bg-light);
+    }
+
     .Drawer {
         background: var(--color-bg);
     }
@@ -75,8 +92,20 @@
         color: var(--color-hover);
     }
 
+    .SidebarMenu .Text--subdued {
+        color: var(--color-fg-dark);
+    }
+
     .Linklist__Item::before {
         background: var(--color-hover);
+    }
+
+    button.ButtonGroup__Item {
+        background-color: var(--color-bg);
+    }
+
+    .CollectionToolbar__Item {
+        background: var(--color-bg-light);
     }
 
     .SidebarMenu:hover .Text--subdued:hover {
@@ -106,7 +135,7 @@
     }
 
     .ColorSwatch.is-active::after, .ColorSwatch::after {
-        border: 1px solid var(--color-bg-light) !important;
+        border: none !important;
     }
 
     .ColorSwatch.is-active::after, .ColorSwatch__Radio:checked + .ColorSwatch::after {
@@ -147,6 +176,30 @@
     }
 
     /* Product page */
+
+
+    /* Special selector for the backpack page */
+    #backpack-remaining {
+        background: var(--color-bg);
+        border: 1px solid var(--color-hover);
+    }
+
+    .productDetails {
+        background: var(--color-bg);
+        border: 1px solid var(--color-bg-light);
+    }
+
+    .SizeSwatch {
+        background-color: var(--color-bg);
+    }
+
+    .Rte h1, .Rte h2, .Rte h3, .Rte h4, .Rte h5, .Rte h6 {
+        color: var(--color-fg);
+    }
+
+    .Button--secondary, #shopify-product-reviews .spr-pagination-prev > a, #shopify-product-reviews .spr-pagination-next > a {
+        background-color: var(--color-bg-light);
+    }
 
     .spr-pagination-next > a, .spr-pagination-prev > a, .Button--secondary {
         color: var(--color-fg);
@@ -224,15 +277,16 @@
     }
 
     .jdgm-star {
-        color: var(--color-link);
+        color: var(--color-hover);
     }
 
     .jdgm-histogram .jdgm-star {
-        color: var(--color-link);
+        color: var(--color-hover);
     }
 
     .jdgm-histogram__bar-content {
-        background: var(--color-hover);
+        background: var(--color-hover) !important;
+        box-shadow: inset 0 0 1px var(--color-hover);
     }
 
     .jdgm-rev__icon::after, .jdgm-rev__buyer-badge {
@@ -269,8 +323,8 @@
     }
 
     /*  This is a fix for the gallery navigation going off the top of the screen on pages with lots of images.
-    Instead of fixing that, I just use flex to rotate the nav and center the items with a transparent BG.
-    There's only so much I can do purely with CSS, and I think I would have written the DOM differently.
+        Instead of fixing that, I just use flex to rotate the nav and center the items with a transparent BG.
+        There's only so much I can do purely with CSS, and I think I would have written the DOM differently.
     */
 
     .Product__Gallery--stack .Product__SlideshowNav {
@@ -319,7 +373,7 @@
     .spr-button-primary:not(input)::before, .spr-summary-actions-newreview::before, .Button--primary::before, .shopify-payment-button__button--unbranded::before {
         background-color: var(--color-bg);
         /* Really this height adjustment is only to fix a single issue on the "add/edit address" dialog,
-        but all the buttons use the same selector so there's really no way to differentiate them.
+           but all the buttons use the same selector so there's really no way to differentiate them.
         */
         height: 99%;
     }
@@ -329,7 +383,7 @@
         border-color: var(--color-hover);
     }
 
-    /* Account page -- Add address dialog */
+    /* Account page -- Add/edit address dialog */
 
     .Modal {
         background: var(--color-bg);
@@ -356,6 +410,10 @@
         color: var(--color-hover);
     }
 
+    .spr-button-primary:not(input)::before, .spr-summary-actions-newreview::before, .Button--primary::before, .shopify-payment-button__button--unbranded::before {
+        background-color: transparent;
+    }
+
     /* Account page -- Order page */
 
     .spr-form-message-success, .Alert--success {
@@ -371,6 +429,8 @@
         color: var(--color-hover);
     }
 
+    /* cart */
+
     .CartItem__Title {
         color: var(--color-link);
     }
@@ -379,6 +439,35 @@
         color: var(--color-hover);
     }
 
+    .CartItem__Price {
+        color: var(--color-hover);
+    }
+
+    #Free_Upsell_Shelf .fusDetails {
+        background-color: var(--color-bg-light);
+    }
+
+    #Free_Upsell_Shelf .Fus_Header .Fus_Title {
+        color: var(--color-fg);
+    }
+
+    .spr-button-primary:not(input), .spr-summary-actions-newreview, .Button--primary, .shopify-payment-button__button--unbranded {
+        border-color: var(--color-fg-dark);
+    }
+
+    .ShippingEstimator__Country select, .ShippingEstimator__Province select {
+        border: 2px solid var(--color-bg-light);
+    }
+
+    .Select--primary::after {
+        background: transparent;
+    }
+
+    .QuantitySelector__Button {
+        background-color: var(--color-bg);
+        color: var(--color-fg);
+        border: 1px solid var(--color-fg-dark);
+    }
 }
 
 @-moz-document regexp("https://www.lttstore.com/.+/checkouts.*"), regexp("https://www.lttstore.com/.+/orders.*") {
@@ -482,7 +571,9 @@
         background: var(--color-bg-light);
     }
 
-
+    .step__footer__previous-link:hover .previous-link__icon {
+        fill: var(--color-hover);
+    }
 }
 
 @-moz-document url-prefix("https://checkout.shopifycs.com/") {
